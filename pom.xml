@@ -117,6 +117,15 @@
                     <jvmArguments>
                         -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005
                     </jvmArguments>
+                    <mainClass>com.github.bilak.spring_boot_primefaces_template.configuration.Application</mainClass>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.6</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
             </plugin>
         </plugins>

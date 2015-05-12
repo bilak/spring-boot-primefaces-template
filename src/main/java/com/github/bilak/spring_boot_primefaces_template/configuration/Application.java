@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.embedded.FilterRegistrationBean;
 import org.springframework.boot.context.embedded.ServletContextInitializer;
 import org.springframework.boot.context.embedded.ServletRegistrationBean;
+import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 
@@ -19,7 +20,7 @@ import javax.servlet.DispatcherType;
 @SpringBootApplication
 @EnableAutoConfiguration
 @ComponentScan(basePackages = {"com.github.bilak.spring_boot_primefaces_template.view"})
-public class Application {
+public class Application extends SpringBootServletInitializer {
 
 
     public static void main(String[] args) {
@@ -29,7 +30,7 @@ public class Application {
 
     @Bean
     public ServletRegistrationBean facesServletRegistraiton() {
-        ServletRegistrationBean registration = new ServletRegistrationBean(new FacesServlet(), new String[]{"*.jsf", "*.xhtml"});
+        ServletRegistrationBean registration = new ServletRegistrationBean(new FacesServlet(), new String[]{"*.xhtml"});
         registration.setName("Faces Servlet");
         registration.setLoadOnStartup(1);
         return registration;
