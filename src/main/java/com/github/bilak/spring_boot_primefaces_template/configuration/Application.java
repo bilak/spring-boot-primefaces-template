@@ -1,6 +1,7 @@
 package com.github.bilak.spring_boot_primefaces_template.configuration;
 
 import org.primefaces.webapp.filter.FileUploadFilter;
+import org.springframework.beans.factory.config.CustomScopeConfigurer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,6 +14,8 @@ import org.springframework.context.annotation.ComponentScan;
 
 import javax.faces.webapp.FacesServlet;
 import javax.servlet.DispatcherType;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by lvasek on 17/04/15.
@@ -56,5 +59,14 @@ public class Application extends SpringBootServletInitializer {
             servletContext.setInitParameter("primefaces.FONT_AWESOME", Boolean.TRUE.toString());
             servletContext.setInitParameter("primefaces.UPLOADER", "commons");
         };
+    }
+
+    @Bean
+    public static CustomScopeConfigurer customScopeConfigurer(){
+        CustomScopeConfigurer configurer = new CustomScopeConfigurer();
+        Map<String, Object> scopes = new HashMap<String, Object>();
+        scopes.put("view", new ViewScope());
+        configurer.setScopes(scopes);
+        return configurer;
     }
 }
