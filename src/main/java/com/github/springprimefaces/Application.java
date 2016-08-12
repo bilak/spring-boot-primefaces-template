@@ -1,6 +1,5 @@
 package com.github.springprimefaces;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,7 +13,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletContextInitializer;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
-import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -30,13 +28,7 @@ public class Application extends SpringBootServletInitializer {
 
 
     public static void main(String[] args) {
-        final ConfigurableApplicationContext ctx = SpringApplication.run(Application.class, args);
-        System.out.println("ok......");
-        String[] beanNames = ctx.getBeanDefinitionNames();
-        Arrays.sort(beanNames);
-        for (String beanName : beanNames) {
-            System.out.println(beanName);
-        }
+        SpringApplication.run(Application.class, args);
     }
 
     @Bean
@@ -46,16 +38,6 @@ public class Application extends SpringBootServletInitializer {
         registration.setLoadOnStartup(1);
         return registration;
     }
-
-
-//    @Bean
-//    public FilterRegistrationBean facesUploadFilterRegistration() {
-//        FilterRegistrationBean registrationBean = new FilterRegistrationBean(new FileUploadFilter(), facesServletRegistraiton());
-//        registrationBean.setName("PrimeFaces FileUpload Filter");
-//        registrationBean.addUrlPatterns("/*");
-//        registrationBean.setDispatcherTypes(DispatcherType.FORWARD, DispatcherType.REQUEST);
-//        return registrationBean;
-//    }
 
     @Bean
     public ServletContextInitializer servletContextInitializer() {
