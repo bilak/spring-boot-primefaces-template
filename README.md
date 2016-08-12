@@ -1,4 +1,9 @@
 # spring-boot-primefaces-template
 
-Simple template application for <b>Primefaces (5.2)</b> on <b>Spring-boot (1.2.3).</b></br>
+Simple template application for <b>Primefaces (6.0)</b> on <b>Spring-boot (1.4.0).</b></br>
 Also configured fileupload and provided one page with this functionality.
+
+# Testing 
+
+    $ gradle clean build bootRun
+    # access contact list page: http://localhost:9091/view/contact-list.xhtml    
