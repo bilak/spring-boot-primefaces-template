@@ -51,9 +51,9 @@ dependencies {
     compile group: 'com.sun.faces', name: 'jsf-api', version: '2.2.12'
     compile group: 'com.sun.faces', name: 'jsf-impl', version: '2.2.12'
 
-    compile group: 'org.primefaces', name: 'primefaces', version: '5.2'
-    compile group: 'org.primefaces.themes', name: 'afterdark', version: '1.0.8'
-//    compile group: 'org.primefaces.themes', name: 'all-themes', version: '1.0.8'
+    compile group: 'org.primefaces', name: 'primefaces', version: '6.0'
+//    compile group: 'org.primefaces.themes', name: 'afterdark', version: '1.0.8'
+    compile group: 'org.primefaces.themes', name: 'bootstrap', version: '1.0.8'
     compile group: 'net.bootsfaces', name: 'bootsfaces', version: '0.7.0'
 
     // commons
