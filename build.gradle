@@ -42,29 +42,19 @@ allprojects{
 
 dependencies {
 
-//    compile group: 'org.springframework.boot', name: 'spring-boot-starter', version: '1.4.0.RELEASE'
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '1.4.0.RELEASE'
-//    compile group: 'org.springframework.boot', name: 'spring-boot-starter-tomcat', version: '1.4.0.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: '1.4.0.RELEASE'
     compile group: "org.apache.tomcat.embed", name: "tomcat-embed-jasper"
     compile group: 'jstl', name: 'jstl', version: '1.2'
 
     // JSF
     compile group: 'com.sun.faces', name: 'jsf-api', version: '2.2.12'
     compile group: 'com.sun.faces', name: 'jsf-impl', version: '2.2.12'
-//    compile group: 'org.glassfish', name: 'javax.faces', version: '2.2.12'
 
     compile group: 'org.primefaces', name: 'primefaces', version: '5.2'
     compile group: 'org.primefaces.themes', name: 'afterdark', version: '1.0.8'
 //    compile group: 'org.primefaces.themes', name: 'all-themes', version: '1.0.8'
     compile group: 'net.bootsfaces', name: 'bootsfaces', version: '0.7.0'
-
-   // tomcat embed
-//    provided group: 'org.apache.tomcat.embed', name: 'tomcat-embed-core', version: '8.0.20'
-//    provided group: 'org.apache.tomcat.embed', name: 'tomcat-embed-logging-juli', version: '8.0.20'
-//    provided group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: '8.0.20'
-//    provided group: 'javax.servlet', name: 'javax.servlet-api', version: '3.1.0'
-//    compile group: 'javax.servlet', name: 'jsp-api', version: '2.0'
-
 
     // commons
     compile group: 'commons-io', name: 'commons-io', version: '2.4'
