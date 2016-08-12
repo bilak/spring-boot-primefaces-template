@@ -1,0 +1,110 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        maven { url = 'http://nexus.pagseguro.intranet/repository/public' }
+    }
+
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.0.RELEASE")
+        classpath('net.ltgt.gradle:gradle-errorprone-plugin:0.0.6')
+        classpath('mesos-release-plugin:mesos-release-plugin:2.1.6')
+    }
+}
+
+repositories {
+    maven { url = 'http://nexus.pagseguro.intranet/repository/public' }
+    maven {url = 'http://repository.primefaces.org'}
+}
+
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'spring-boot'
+sourceCompatibility = 1.8
+
+
+configurations {
+    provided
+}
+
+sourceSets {
+    main {
+        compileClasspath += configurations.provided
+        test.compileClasspath += configurations.provided
+        test.runtimeClasspath += configurations.provided
+    }
+}
+
+allprojects{
+    tasks.withType(JavaCompile) {
+        options.encoding = 'ISO-8859-1'
+    }
+}
+
+dependencies {
+
+//    compile group: 'org.springframework.boot', name: 'spring-boot-starter', version: '1.4.0.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '1.4.0.RELEASE'
+//    compile group: 'org.springframework.boot', name: 'spring-boot-starter-tomcat', version: '1.4.0.RELEASE'
+    compile group: "org.apache.tomcat.embed", name: "tomcat-embed-jasper"
+    compile group: 'jstl', name: 'jstl', version: '1.2'
+
+    // JSF
+    compile group: 'com.sun.faces', name: 'jsf-api', version: '2.2.12'
+    compile group: 'com.sun.faces', name: 'jsf-impl', version: '2.2.12'
+//    compile group: 'org.glassfish', name: 'javax.faces', version: '2.2.12'
+
+    compile group: 'org.primefaces', name: 'primefaces', version: '5.2'
+    compile group: 'org.primefaces.themes', name: 'afterdark', version: '1.0.8'
+//    compile group: 'org.primefaces.themes', name: 'all-themes', version: '1.0.8'
+    compile group: 'net.bootsfaces', name: 'bootsfaces', version: '0.7.0'
+
+   // tomcat embed
+//    provided group: 'org.apache.tomcat.embed', name: 'tomcat-embed-core', version: '8.0.20'
+//    provided group: 'org.apache.tomcat.embed', name: 'tomcat-embed-logging-juli', version: '8.0.20'
+//    provided group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: '8.0.20'
+//    provided group: 'javax.servlet', name: 'javax.servlet-api', version: '3.1.0'
+//    compile group: 'javax.servlet', name: 'jsp-api', version: '2.0'
+
+
+    // commons
+    compile group: 'commons-io', name: 'commons-io', version: '2.4'
+    compile group: 'commons-fileupload', name: 'commons-fileupload', version: '1.3.1'
+
+    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '1.4.0.RELEASE'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testCompile group: 'org.easymock', name: 'easymock', version: '3.4'
+    testCompile group: 'org.mockito', name: 'mockito-core', version: '2.0.100-beta'
+
+}
+
+
+// apply plugin: 'ps.mesosRelease'
+// mesosRelease {
+//     publish {
+//         servers = [
+//                 [
+//                         envPattern: "(qa)",
+//                         name: "Mesos - QA",
+//                         username: "mesos",
+//                         password: "mesos",
+//                         binaryServer: "http://qa.uploader.mesos.pagseguro.intranet/share",
+//                         marathonServer: "http://qa.marathon.mesos.pagseguro.intranet",
+//                         chronosServer: "http://qa.chronos.mesos.pagseguro.intranet"
+//                 ],
+//                 [
+//                         envPattern: "(prod)",
+//                         name: "Mesos - PROD",
+//                         username: "mesos",
+//                         password: "mesos",
+//                         binaryServer: "http://uploader.mesos.pagseguro.intranet/share",
+//                         marathonServer: "http://glete.marathon.pagseguro.intranet",
+//                         chronosServer: "http://glete.chronos.pagseguro.intranet"
+//                 ]
+//         ]
+//         additionalBinaries = [
+//                 "deploy/qa-application.properties",
+//                 "deploy/prod-application.properties"
+//         ]
+//         binaryPrefix = "/pagseguro-atm"
+//     }
+// }

@@ -1,34 +1,42 @@
-package com.github.bilak.spring_boot_primefaces_template.configuration;
+package com.github.springprimefaces;
 
-import org.primefaces.webapp.filter.FileUploadFilter;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.faces.webapp.FacesServlet;
+
+import com.github.springprimefaces.configuration.ViewScope;
 import org.springframework.beans.factory.config.CustomScopeConfigurer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.context.embedded.FilterRegistrationBean;
-import org.springframework.boot.context.embedded.ServletContextInitializer;
-import org.springframework.boot.context.embedded.ServletRegistrationBean;
-import org.springframework.boot.context.web.SpringBootServletInitializer;
+import org.springframework.boot.web.servlet.ServletContextInitializer;
+import org.springframework.boot.web.servlet.ServletRegistrationBean;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
-
-import javax.faces.webapp.FacesServlet;
-import javax.servlet.DispatcherType;
-import java.util.HashMap;
-import java.util.Map;
+import org.springframework.context.annotation.Configuration;
 
 /**
  * Created by lvasek on 17/04/15.
  */
 @SpringBootApplication
+@Configuration
 @EnableAutoConfiguration
-@ComponentScan(basePackages = {"com.github.bilak.spring_boot_primefaces_template.view"})
+@ComponentScan
 public class Application extends SpringBootServletInitializer {
 
 
     public static void main(String[] args) {
-        SpringApplication app = new SpringApplication(Application.class);
-        app.run(args);
+        final ConfigurableApplicationContext ctx = SpringApplication.run(Application.class, args);
+        System.out.println("ok......");
+        String[] beanNames = ctx.getBeanDefinitionNames();
+        Arrays.sort(beanNames);
+        for (String beanName : beanNames) {
+            System.out.println(beanName);
+        }
     }
 
     @Bean
@@ -40,20 +48,20 @@ public class Application extends SpringBootServletInitializer {
     }
 
 
-    @Bean
-    public FilterRegistrationBean facesUploadFilterRegistration() {
-        FilterRegistrationBean registrationBean = new FilterRegistrationBean(new FileUploadFilter(), facesServletRegistraiton());
-        registrationBean.setName("PrimeFaces FileUpload Filter");
-        registrationBean.addUrlPatterns("/*");
-        registrationBean.setDispatcherTypes(DispatcherType.FORWARD, DispatcherType.REQUEST);
-        return registrationBean;
-    }
+//    @Bean
+//    public FilterRegistrationBean facesUploadFilterRegistration() {
+//        FilterRegistrationBean registrationBean = new FilterRegistrationBean(new FileUploadFilter(), facesServletRegistraiton());
+//        registrationBean.setName("PrimeFaces FileUpload Filter");
+//        registrationBean.addUrlPatterns("/*");
+//        registrationBean.setDispatcherTypes(DispatcherType.FORWARD, DispatcherType.REQUEST);
+//        return registrationBean;
+//    }
 
     @Bean
     public ServletContextInitializer servletContextInitializer() {
         return servletContext -> {
             servletContext.setInitParameter("com.sun.faces.forceLoadConfiguration", Boolean.TRUE.toString());
-            servletContext.setInitParameter("primefaces.THEME", "bootstrap");
+            //servletContext.setInitParameter("primefaces.THEME", "bootstrap");
             servletContext.setInitParameter("primefaces.CLIENT_SIDE_VALIDATION", Boolean.TRUE.toString());
             servletContext.setInitParameter("javax.faces.FACELETS_SKIP_COMMENTS", Boolean.TRUE.toString());
             servletContext.setInitParameter("primefaces.FONT_AWESOME", Boolean.TRUE.toString());

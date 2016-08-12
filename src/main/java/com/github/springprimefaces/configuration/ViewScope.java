@@ -1,4 +1,4 @@
-package com.github.bilak.spring_boot_primefaces_template.configuration;
+package com.github.springprimefaces.configuration;
 
 import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.beans.factory.config.Scope;

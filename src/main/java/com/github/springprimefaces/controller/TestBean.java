@@ -1,10 +1,11 @@
-package com.github.bilak.spring_boot_primefaces_template.view;
+package com.github.springprimefaces.controller;
+
+import java.io.Serializable;
+
+import javax.annotation.PostConstruct;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
-
-import javax.annotation.PostConstruct;
-import java.io.Serializable;
 
 /**
  * Created by lvasek on 09/06/15.

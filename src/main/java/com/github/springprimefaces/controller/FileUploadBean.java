@@ -1,13 +1,14 @@
-package com.github.bilak.spring_boot_primefaces_template.view;
+package com.github.springprimefaces.controller;
+
+import java.io.Serializable;
+
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.UploadedFile;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
-
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
-import java.io.Serializable;
 
 /**
  * Created by lvasek on 17/04/15.
