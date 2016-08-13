@@ -1,18 +1,17 @@
 buildscript {
     repositories {
         mavenLocal()
-        maven { url = 'http://nexus.pagseguro.intranet/repository/public' }
+        mavenCentral()
     }
 
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.0.RELEASE")
         classpath('net.ltgt.gradle:gradle-errorprone-plugin:0.0.6')
-        classpath('mesos-release-plugin:mesos-release-plugin:2.1.6')
     }
 }
 
 repositories {
-    maven { url = 'http://nexus.pagseguro.intranet/repository/public' }
+    mavenCentral()
     maven {url = 'http://repository.primefaces.org'}
 }
 
@@ -66,35 +65,3 @@ dependencies {
     testCompile group: 'org.mockito', name: 'mockito-core', version: '2.0.100-beta'
 
 }
-
-
-// apply plugin: 'ps.mesosRelease'
-// mesosRelease {
-//     publish {
-//         servers = [
-//                 [
-//                         envPattern: "(qa)",
-//                         name: "Mesos - QA",
-//                         username: "mesos",
-//                         password: "mesos",
-//                         binaryServer: "http://qa.uploader.mesos.pagseguro.intranet/share",
-//                         marathonServer: "http://qa.marathon.mesos.pagseguro.intranet",
-//                         chronosServer: "http://qa.chronos.mesos.pagseguro.intranet"
-//                 ],
-//                 [
-//                         envPattern: "(prod)",
-//                         name: "Mesos - PROD",
-//                         username: "mesos",
-//                         password: "mesos",
-//                         binaryServer: "http://uploader.mesos.pagseguro.intranet/share",
-//                         marathonServer: "http://glete.marathon.pagseguro.intranet",
-//                         chronosServer: "http://glete.chronos.pagseguro.intranet"
-//                 ]
-//         ]
-//         additionalBinaries = [
-//                 "deploy/qa-application.properties",
-//                 "deploy/prod-application.properties"
-//         ]
-//         binaryPrefix = "/pagseguro-atm"
-//     }
-// }
