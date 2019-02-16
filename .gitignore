@@ -1,5 +1,5 @@
 .idea
-spring-boot-primefaces-template.iml
+*.iml
 target/
 build/
 .gradle/

@@ -1,66 +1,56 @@
-buildscript {
-    repositories {
-        mavenLocal()
-        mavenCentral()
-    }
-
-    dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.0.RELEASE")
-    }
+plugins {
+//    id 'org.springframework.boot' version '2.1.3.RELEASE'
+	id 'org.springframework.boot' version '1.5.18.RELEASE'
 }
 
 repositories {
-    mavenCentral()
-    maven {url = 'http://repository.primefaces.org'}
+	mavenLocal()
+	mavenCentral()
+	maven { url = 'http://repository.primefaces.org' }
 }
 
 apply plugin: 'java'
-apply plugin: 'war'
-apply plugin: 'spring-boot'
-sourceCompatibility = 1.8
-
+sourceCompatibility = JavaVersion.VERSION_11
 
 configurations {
-    provided
+	provided
 }
 
 sourceSets {
-    main {
-        compileClasspath += configurations.provided
-        test.compileClasspath += configurations.provided
-        test.runtimeClasspath += configurations.provided
-    }
+	main {
+		compileClasspath += configurations.provided
+		test.compileClasspath += configurations.provided
+		test.runtimeClasspath += configurations.provided
+	}
 }
 
-allprojects{
-    tasks.withType(JavaCompile) {
-        options.encoding = 'UTF-8'
-    }
+allprojects {
+	tasks.withType(JavaCompile) {
+		options.encoding = 'UTF-8'
+	}
 }
 
 dependencies {
 
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '1.4.0.RELEASE'
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: '1.4.0.RELEASE'
-    compile group: "org.apache.tomcat.embed", name: "tomcat-embed-jasper"
-    compile group: 'jstl', name: 'jstl', version: '1.2'
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: springBootVersion
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: springBootVersion
+	compile group: "org.apache.tomcat.embed", name: "tomcat-embed-jasper"
+	compile group: 'jstl', name: 'jstl', version: jstlVersion
 
-    // JSF
-    compile group: 'com.sun.faces', name: 'jsf-api', version: '2.2.12'
-    compile group: 'com.sun.faces', name: 'jsf-impl', version: '2.2.12'
+	// JSF
+	compile group: 'com.sun.faces', name: 'jsf-api', version: jsfVersion
+	compile group: 'com.sun.faces', name: 'jsf-impl', version: jsfVersion
 
-    compile group: 'org.primefaces', name: 'primefaces', version: '6.0'
-//    compile group: 'org.primefaces.themes', name: 'afterdark', version: '1.0.8'
-    compile group: 'org.primefaces.themes', name: 'bootstrap', version: '1.0.8'
-    compile group: 'net.bootsfaces', name: 'bootsfaces', version: '0.7.0'
+	compile group: 'org.primefaces', name: 'primefaces', version: primefacesVersion
+	compile group: 'org.primefaces.themes', name: 'bootstrap', version: '1.0.8'
+	compile group: 'net.bootsfaces', name: 'bootsfaces', version: '0.7.0'
 
-    // commons
-    compile group: 'commons-io', name: 'commons-io', version: '2.4'
-    compile group: 'commons-fileupload', name: 'commons-fileupload', version: '1.3.1'
+	// commons
+	compile group: 'commons-io', name: 'commons-io', version: '2.4'
+	compile group: 'commons-fileupload', name: 'commons-fileupload', version: '1.3.1'
 
-    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '1.4.0.RELEASE'
-    testCompile group: 'junit', name: 'junit', version: '4.12'
-    testCompile group: 'org.easymock', name: 'easymock', version: '3.4'
-    testCompile group: 'org.mockito', name: 'mockito-core', version: '2.0.100-beta'
+	testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: springBootVersion
+	testCompile group: 'junit', name: 'junit', version: '4.12'
+	testCompile group: 'org.mockito', name: 'mockito-core', version: '2.24.0'
 
 }
