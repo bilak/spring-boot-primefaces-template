@@ -1,11 +1,10 @@
 package com.github.springprimefaces.controller;
 
-import java.io.Serializable;
-
-import javax.annotation.PostConstruct;
-
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+
+import javax.annotation.PostConstruct;
+import java.io.Serializable;
 
 /**
  * Created by lvasek on 09/06/15.
@@ -14,53 +13,53 @@ import org.springframework.stereotype.Component;
 @Scope("view")
 public class TestBean implements Serializable {
 
-    TestPojo testPojo = new TestPojo();
+	TestPojo testPojo = new TestPojo();
 
-    boolean edit = false;
+	boolean edit = false;
 
-    public class TestPojo{
-        boolean trueFalse = true;
-        String testText = "testing this";
+	@PostConstruct
+	public void init() {
+		System.out.println(testPojo.trueFalse);
+	}
 
-        public boolean isTrueFalse() {
-            return trueFalse;
-        }
+	public TestPojo getTestPojo() {
+		return testPojo;
+	}
 
-        public void setTrueFalse(boolean trueFalse) {
-            this.trueFalse = trueFalse;
-        }
+	public void setTestPojo(TestPojo testPojo) {
+		this.testPojo = testPojo;
+	}
 
-        public String getTestText() {
-            return testText;
-        }
+	public boolean isEdit() {
+		return edit;
+	}
 
-        public void setTestText(String testText) {
-            this.testText = testText;
-        }
-    }
+	public void setEdit(boolean edit) {
+		this.edit = edit;
+	}
 
-    @PostConstruct
-    public void init(){
-        System.out.println(testPojo.trueFalse);
-    }
+	public void editActionListener() {
+		this.edit = true;
+	}
 
-    public TestPojo getTestPojo() {
-        return testPojo;
-    }
+	public class TestPojo {
+		boolean trueFalse = true;
+		String testText = "testing this";
 
-    public void setTestPojo(TestPojo testPojo) {
-        this.testPojo = testPojo;
-    }
+		public boolean isTrueFalse() {
+			return trueFalse;
+		}
 
-    public boolean isEdit() {
-        return edit;
-    }
+		public void setTrueFalse(boolean trueFalse) {
+			this.trueFalse = trueFalse;
+		}
 
-    public void setEdit(boolean edit) {
-        this.edit = edit;
-    }
+		public String getTestText() {
+			return testText;
+		}
 
-    public void editActionListener(){
-        this.edit = true;
-    }
+		public void setTestText(String testText) {
+			this.testText = testText;
+		}
+	}
 }

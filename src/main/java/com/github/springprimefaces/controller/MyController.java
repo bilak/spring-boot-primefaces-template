@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 /**
  * @author elvis
  * @version $Revision: $<br/>
- *          $Id: $
+ * $Id: $
  * @since 8/12/16 10:39 AM
  */
 @Component

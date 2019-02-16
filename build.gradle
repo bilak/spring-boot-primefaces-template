@@ -1,6 +1,6 @@
 plugins {
-//    id 'org.springframework.boot' version '2.1.3.RELEASE'
-	id 'org.springframework.boot' version '1.5.18.RELEASE'
+	id 'org.springframework.boot' version '2.1.3.RELEASE'
+	id 'java'
 }
 
 repositories {
@@ -9,7 +9,6 @@ repositories {
 	maven { url = 'http://repository.primefaces.org' }
 }
 
-apply plugin: 'java'
 sourceCompatibility = JavaVersion.VERSION_11
 
 configurations {
@@ -34,7 +33,7 @@ dependencies {
 
 	compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: springBootVersion
 	compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: springBootVersion
-	compile group: "org.apache.tomcat.embed", name: "tomcat-embed-jasper"
+	compile group: "org.apache.tomcat.embed", name: "tomcat-embed-jasper", version: '9.0.16'
 	compile group: 'jstl', name: 'jstl', version: jstlVersion
 
 	// JSF

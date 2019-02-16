@@ -1,17 +1,16 @@
 package com.github.springprimefaces.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.faces.bean.ManagedBean;
-
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
+
+import javax.faces.bean.ManagedBean;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author elvis
  * @version $Revision: $<br/>
- *          $Id: $
+ * $Id: $
  * @since 8/12/16 10:57 AM
  */
 
@@ -20,25 +19,24 @@ import org.springframework.stereotype.Controller;
 @Controller("ContactListController")
 public class ContactListController {
 
-    private String currentContact = "New Contact";
+	List<String> contacts = new ArrayList<>();
+	private String currentContact = "New Contact";
 
-    List<String> contacts = new ArrayList<>();
+	public void addContact(String contact) {
+		contacts.add(contact);
+		this.currentContact = "";
+	}
 
-    public void addContact(String contact){
-        contacts.add(contact);
-        this.currentContact = "";
-    }
+	public List<String> getContacts() {
+		return contacts;
+	}
 
-    public List<String> getContacts() {
-        return contacts;
-    }
+	public String getCurrentContact() {
+		return currentContact;
+	}
 
-    public String getCurrentContact() {
-        return currentContact;
-    }
-
-    public void setCurrentContact(String currentContact) {
-        this.currentContact = currentContact;
-    }
+	public void setCurrentContact(String currentContact) {
+		this.currentContact = currentContact;
+	}
 
 }

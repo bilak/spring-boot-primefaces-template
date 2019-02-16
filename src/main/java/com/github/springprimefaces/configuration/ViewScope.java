@@ -11,41 +11,41 @@ import java.util.Map;
  */
 // copied from https://cagataycivici.wordpress.com/2010/02/17/port-jsf-2-0s-viewscope-to-spring-3-0/
 public class ViewScope implements Scope {
-    @Override
-    public Object get(String name, ObjectFactory<?> objectFactory) {
-        FacesContext context = FacesContext.getCurrentInstance();
-        if (context.getViewRoot() != null) {
-            Map<String, Object> viewMap = context.getViewRoot().getViewMap();
+	@Override
+	public Object get(String name, ObjectFactory<?> objectFactory) {
+		FacesContext context = FacesContext.getCurrentInstance();
+		if (context.getViewRoot() != null) {
+			Map<String, Object> viewMap = context.getViewRoot().getViewMap();
 
-            if (viewMap.containsKey(name)) {
-                return viewMap.get(name);
-            } else {
-                Object object = objectFactory.getObject();
-                viewMap.put(name, object);
+			if (viewMap.containsKey(name)) {
+				return viewMap.get(name);
+			} else {
+				Object object = objectFactory.getObject();
+				viewMap.put(name, object);
 
-                return object;
-            }
-        }
-        return null;
-    }
+				return object;
+			}
+		}
+		return null;
+	}
 
-    @Override
-    public Object remove(String name) {
-        return FacesContext.getCurrentInstance().getViewRoot().getViewMap().remove(name);
-    }
+	@Override
+	public Object remove(String name) {
+		return FacesContext.getCurrentInstance().getViewRoot().getViewMap().remove(name);
+	}
 
-    @Override
-    public void registerDestructionCallback(String s, Runnable runnable) {
+	@Override
+	public void registerDestructionCallback(String s, Runnable runnable) {
 
-    }
+	}
 
-    @Override
-    public Object resolveContextualObject(String s) {
-        return null;
-    }
+	@Override
+	public Object resolveContextualObject(String s) {
+		return null;
+	}
 
-    @Override
-    public String getConversationId() {
-        return null;
-    }
+	@Override
+	public String getConversationId() {
+		return null;
+	}
 }
