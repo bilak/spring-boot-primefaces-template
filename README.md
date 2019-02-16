@@ -1,4 +1,13 @@
-# spring-boot-primefaces-template
+Simple example application for **Primefaces (6.0)** running on **Spring-boot 2**
 
-Simple template application for <b>Primefaces (5.2)</b> on <b>Spring-boot (1.2.3).</b></br>
-Also configured fileupload and provided one page with this functionality.
+* File Upload 
+* Realtime Database Insertion 
+
+### Running It 
+
+```bash
+$ ./gradlew bootRun
+...
+Tomcat initialized with port(s): 9091 (http)
+```
+Then access contact list page: http://localhost:9091/view/contact-list.xhtml    
